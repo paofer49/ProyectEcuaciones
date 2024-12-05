@@ -11,6 +11,7 @@ namespace ProyectEcuaciones
         static Ecuacion ecuacion = new Ecuacion();
         static Euler eulers = new Euler();
         static EulerMejorado eulerm = new EulerMejorado();
+        static RungeKutta kutta = new RungeKutta();
         static void Main(string[] args)
         {
             
@@ -25,6 +26,11 @@ namespace ProyectEcuaciones
             ecuacion.x = 1;
             ecuacion.y = 1;
             eulerm.EulerMejorados(ecuacion.x, ecuacion.y, ecuacion.h);
+
+            Console.WriteLine("---------------------Runge Kutta--------------------------------");
+            ecuacion.x = 1;
+            ecuacion.y = 1;
+            kutta.RungeKuttas(ecuacion.x, ecuacion.y, ecuacion.h);
 
             Console.ReadKey();
         }
