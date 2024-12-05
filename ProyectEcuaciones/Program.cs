@@ -8,58 +8,27 @@ namespace ProyectEcuaciones
 {
     internal class Program
     {
+        static Ecuacion ecuacion = new Ecuacion();
+        static Euler eulers = new Euler();
+        static EulerMejorado eulerm = new EulerMejorado();
         static void Main(string[] args)
         {
+            
             Console.WriteLine("---------------------Euler------------------------------------------");
-            double x = 0;
-            double y = 3;
-            double h = 0.1;
-            Euler(x, y, h);
+            ecuacion.x = 0;
+            ecuacion.y = 3;
+            ecuacion.h = 0.1;
+            eulers.Eulers(ecuacion.x, ecuacion.y, ecuacion.h);
 
             Console.WriteLine("---------------------Euler Mejorado--------------------------------");
 
-            double x2 = 1;
-            double y2 = 1;
-            EulerMejorado(x2, y2, h);
+            ecuacion.x = 1;
+            ecuacion.y = 1;
+            eulerm.EulerMejorados(ecuacion.x, ecuacion.y, ecuacion.h);
 
             Console.ReadKey();
         }
 
-        static double funcion(double x, double y) 
-        {
-            return x/y;
-        }
 
-        static void Euler(double x, double y, double h) 
-        {
-            for (int i = 0; i <15; i++)
-            {
-                Console.WriteLine($"x: {x}, y: {y}");
-                x += h;
-                y = y + h * (funcion(x, y));
-            }
-        }
-
-        static double funcion2(double x, double y) 
-        { 
-            return 2 * x * y;
-        }
-
-        static double yast(double x, double y, double h) 
-        { 
-            return y + (h * (funcion2(x, y)));
-        }
-
-        static void EulerMejorado(double x, double y, double h) 
-        {
-            for (int i = 0; i < 15; i++)
-            {
-                Console.WriteLine($"x: {x}, y: {y}");
-                double sid = funcion2(x, y);
-                double sad =yast(x,y, h);
-                x += h;
-                y = y + h/2 * (sid + funcion2(x,sad));
-            }
-        }
     }
 }
